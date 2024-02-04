@@ -33,6 +33,7 @@ class UrlOpenActivity : Activity() {
         var matchedRule: Rule? = null
 
         for (rule in rules) {
+            if (matchedRule != null) break
             if (rule.enabled.not()) continue
             val matches = rule.matches.split("\n").map { it.trim() }.filter { it.isNotBlank() }
             for (match in matches) {
@@ -51,6 +52,7 @@ class UrlOpenActivity : Activity() {
         }
 
         if (matchedRule != null) {
+            Toast.makeText(this, "Matched rule: ${matchedRule.name}", Toast.LENGTH_SHORT).show()
             if (matchedRule.mode == Rule.MODE_DIRECT
                 && matchedRule.targetPackage.isNotBlank()
                 && matchedRule.targetActivity.isNotBlank()
