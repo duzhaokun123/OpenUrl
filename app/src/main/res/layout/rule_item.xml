@@ -80,12 +80,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0: direct\n1: ask\n2: choose\n3: ignore"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
     </LinearLayout>
 
     <LinearLayout

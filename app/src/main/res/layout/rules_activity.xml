@@ -22,6 +22,12 @@
             android:text="Save" />
     </LinearLayout>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mode: 0: direct 1: ask 2: choose 3: ignore"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
