@@ -29,7 +29,7 @@ class RulesActivity : Activity() {
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     val name = etName.text.toString()
                     if (name.isNotBlank()) {
-                        rules.add(Rule(name))
+                        rules.add(0, Rule(name))
                         reloadRules()
                     }
                 }

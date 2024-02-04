@@ -1,10 +1,14 @@
 # Open Url
 
 [![GitHub license](https://img.shields.io/github/license/duzhaokun123/OpenUrl?style=flat-square)](https://github.com/duzhaokun123/OpenUrl/blob/main/LICENSE)
-![Android SDK min 33](https://img.shields.io/badge/Android%20SDK-%3E%3D%2033-brightgreen?style=flat-square&logo=android)
+![Android SDK min 29](https://img.shields.io/badge/Android%20SDK-%3E%3D%2029-brightgreen?style=flat-square&logo=android)
 ![Android SDK target 34](https://img.shields.io/badge/Android%20SDK-target%2034-brightgreen?style=flat-square&logo=android)
 
 简单的工具试图提升 Android 打开链接体验
+
+这假设了 Android 12+ 的打开链接行为改变 未认证链接总是使用默认浏览器打开
+
+所以这应用应该 minSdk 29
 
 ## 起因
 

@@ -6,4 +6,8 @@
     <Preference
         android:key="rules"
         android:title="rules" />
+    <EditTextPreference
+        android:key="dont_show_packages"
+        android:title="don't show packages"
+        android:dialogTitle="one package pre line" />
 </PreferenceScreen>

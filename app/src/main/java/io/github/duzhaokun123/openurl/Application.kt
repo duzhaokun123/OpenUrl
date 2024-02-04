@@ -1,6 +1,7 @@
 package io.github.duzhaokun123.openurl
 
 import android.annotation.SuppressLint
+import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
@@ -8,6 +9,8 @@ import io.github.duzhaokun123.openurl.module.Rule
 import java.io.File
 
 val rules = mutableListOf<Rule>()
+
+val preferences by lazy { PreferenceManager.getDefaultSharedPreferences(Application.instance) }
 
 val gson = Gson()
 

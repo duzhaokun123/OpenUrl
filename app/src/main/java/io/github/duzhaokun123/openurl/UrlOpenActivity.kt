@@ -17,6 +17,7 @@ class UrlOpenActivity : Activity() {
     }
 
     lateinit var openables: List<ResolveInfo>
+    lateinit var showOpenables: List<ResolveInfo>
     lateinit var labels: Array<CharSequence>
 
     private val pm by lazy { packageManager }
@@ -52,7 +53,7 @@ class UrlOpenActivity : Activity() {
         }
 
         if (matchedRule != null) {
-            Toast.makeText(this, "Matched rule: ${matchedRule.name}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Matched rule: ${matchedRule.name}", Toast.LENGTH_SHORT).show()
             if (matchedRule.mode == Rule.MODE_DIRECT
                 && matchedRule.targetPackage.isNotBlank()
                 && matchedRule.targetActivity.isNotBlank()
@@ -65,7 +66,9 @@ class UrlOpenActivity : Activity() {
         val openIntent = Intent(intent.action, intent.data)
         openables = pm.queryIntentActivities(openIntent, PackageManager.MATCH_ALL)
             .filter { it.activityInfo.componentNameCompat != componentName }
-        labels = openables.map { it.activityInfo.loadLabel(pm) }.toTypedArray()
+        val dontShowPackages = preferences.getString("dont_show_packages", "")?.split("\n")?.map { it.trim() } ?: emptyList()
+        showOpenables = openables.filter { it.activityInfo.packageName !in dontShowPackages }
+        labels = showOpenables.map { it.activityInfo.loadLabel(pm) }.toTypedArray()
 
         if (matchedRule != null) {
             val matchedOpenable = openables.find { it.activityInfo.packageName == matchedRule.targetPackage }
@@ -96,7 +99,7 @@ class UrlOpenActivity : Activity() {
         AlertDialog.Builder(this)
             .setTitle(intent.dataString)
             .setItems(labels) { _, which ->
-                val openable = openables[which]
+                val openable = showOpenables[which]
                 open(openable.activityInfo.componentNameCompat)
             }
             .setOnCancelListener { finishAndRemoveTask() }
